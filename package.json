@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node lib/server.js",
     "start-dev": "cd client && react-scripts start",
-    "build": "cd client && npm run build",
+    "build": "cd client && react-scripts build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
