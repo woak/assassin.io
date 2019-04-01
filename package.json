@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "start": "node lib/server.js",
+    "build": "cd client && npm run build"
+  },
+  "name": "assasin-io",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "keywords": [],
+  "author": "Teddy Laurita",
+  "license": "ISC",
+  "description": "assassin game"
+}
