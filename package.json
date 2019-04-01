@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "node lib/server.js",
-    "heroku-postbuild": "cd CLIENT && npm install && npm run build"
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "name": "assasin-io",
   "version": "1.0.0",
