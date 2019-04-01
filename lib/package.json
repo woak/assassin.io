@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "jshashes": "^1.0.7",
+    "pg": "^7.8.0",
+    "express": "latest",
+    "path": "latest",
+    "assert": "latest"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "lib",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "keywords": [],
+  "author": "Teddy Laurita",
+  "license": "ISC",
+  "description": "assassin server"
+}
