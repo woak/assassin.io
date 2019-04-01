@@ -19,3 +19,8 @@ https://nodejs.org/en/download/
 To run server
   navigate to /lib and run ```node server.js```  
   
+  
+  
+---Deployment---
+this app is hosted through heroku, in order to deploy run the following command  
+```git push heroku master```   

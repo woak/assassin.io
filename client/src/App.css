@@ -7,24 +7,42 @@
   overflow: hidden;
 
   min-height: 100vh;
-  background-color: #FFEEF2;
+  background-color: black;
 }
 
-.headerMain {
+
+/* ---- navigator ---- */
+.navigatorWrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  min-height: 10vh;
-  background-color: #FFC8FB;
 }
 
-.headerTitle {
-  color: black;
-  font-family: Futura W01,Helvetica,Arial,Sans-serif;
-  -webkit-text-fill-color: rgba(255,255,255,.7);
-  -webkit-text-stroke-color: #595758;
-  
-  font-size: 4rem;
-  margin: 0;
+.title {
+  color: white;
+  align-self: center;
+
+  font-size: 3rem;
+}
+
+.navigatorBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.navigatorButton {
+  color: white;
+}
+
+/* ---- body ---- */
+
+.bodyWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bodyElementTitle {
+  color: white;
 }
