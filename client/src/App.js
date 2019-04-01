@@ -13,6 +13,48 @@ import './App.css';
 class App extends Component {
 
   pageFocus = () => {
+    
+    if (!this.props.userIsLoggedIn) {
+      return <div className="bodyElementWrapper">
+        {/* login */}
+        <div className="inputWrapper">
+          <b id="pleaseLogin">Login</b>
+          <input className="inputForm"
+            type="text"
+            onChange={({ target: { value } }) =>
+              this.props.inputLoginUsername(value)}
+            placeholder="username">
+          </input>
+          <input className="inputForm"
+            type="text"
+            onChange={({ target: { value } }) =>
+              this.props.inputLoginPassword(value)}
+            placeholder="password">
+          </input>
+          <b onClick={this.props.loginUser}
+            className="inputButton">Login</b>
+        </div>
+        {/* signup */}
+        <div className="inputWrapper">
+          <b id="pleaseLogin">Sign up</b>
+          <input className="inputForm"
+            type="text"
+            onChange={({ target: { value } }) =>
+              this.props.inputSignupUsername(value)}
+            placeholder="username">
+          </input>
+          <input className="inputForm"
+            type="text"
+            onChange={({ target: { value } }) =>
+              this.props.inputSignupPassword(value)}
+            placeholder="password">
+          </input>
+          <b onClick={this.props.loginUser}
+            className="inputButton">Sign up</b>
+        </div>
+      </div>
+    }
+
     switch (this.props.currentFocus) {
 
       case "gotOne": return <div className="bodyElementWrapper">
@@ -46,10 +88,14 @@ class App extends Component {
             EPO E-ssassin
           </b>
           <div className="navigatorBar">
-            <b className="navigatorButton">Home</b>
-            <b className="navigatorButton">GOT ONE?!</b>
-            <b className="navigatorButton">Game overview</b>
-            <b className="navigatorButton">Profile</b>
+            <b className="navigatorButton"
+               onClick={e => this.props.switchViewTo("home")}>Home</b>
+            <b className="navigatorButton"
+               onClick={e => this.props.switchViewTo("gotOne")}>GOT ONE?!</b>
+            <b className="navigatorButton"
+               onClick={e => this.props.switchViewTo("gameOverview")}>Game overview</b>
+            <b className="navigatorButton"
+               onClick={e => this.props.switchViewTo("profile")}>Profile</b>
           </div>
         </div>
         <div className="bodyWrapper">
@@ -62,16 +108,30 @@ class App extends Component {
 
 const {
   currentPageFocus,
+  isLoggedIn,
 } = componentSelectors
 
 const mapStateToProps = state => ({
   currentFocus: currentPageFocus(state),
+  userIsLoggedIn: isLoggedIn(state),
 });
 
 const {
+  changePageView,
+
+  inputLoginUsernameAction,
+  inputLoginPasswordAction,
+  inputSignupUsernameAction,
+  inputSignupPasswordAction,
 } = actions;
 
 const mapDispatchToProps = dispatch => ({
+  switchViewTo: target => dispatch(changePageView(target)),
+
+  inputLoginUsername: value => dispatch(inputLoginUsernameAction(value)),
+  inputLoginPassword: value => dispatch(inputLoginPasswordAction(value)),
+  inputSignupUsername: value => dispatch(inputSignupUsernameAction(value)),
+  inputSignupPassword: value => dispatch(inputSignupPasswordAction(value)),
 });
 
 

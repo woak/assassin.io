@@ -2,6 +2,11 @@
 // import { List } from 'immutable';
 
 export const currentPageFocus = state => state.getIn(
-  ['viewFocus'],
+  ['homePageState', 'viewFocus'],
   "home"
+);
+
+export const isLoggedIn = state => state.getIn(
+  ['homePageState', 'isLoggedIn'],
+  false
 );

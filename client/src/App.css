@@ -33,6 +33,7 @@
 
 .navigatorButton {
   color: white;
+  cursor: pointer;
 }
 
 /* ---- body ---- */
@@ -43,6 +44,17 @@
   align-items: center;
 }
 
+.bodyElementWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .bodyElementTitle {
   color: white;
+}
+
+#pleaseLogin {
+  color: white;
+  font-size: 2rem;
 }
