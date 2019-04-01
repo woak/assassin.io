@@ -14,7 +14,7 @@ class App extends Component {
 
   render = () => (
     <div className="App">
-    
+      <p>HELLO WORLD</p>
     </div>
   );
 }
