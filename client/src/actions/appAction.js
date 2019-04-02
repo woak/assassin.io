@@ -40,21 +40,21 @@ export const actions = {
   }),
 
   validateUserAction: (username, password) => dispatch => {
-    fetch("http://localhost:5000/loginCreds", {
+    fetch("/loginCreds", {
       method: "POST",
       body: JSON.stringify({
-        username
+        username,
+        password,
       }),
       headers: {"Content-Type": "application/json"}
     }).then(response => response.json())
     .then(json => {
-      // TODO TEDDY
-      // LOGIN OR LOGOUT DEPENDING ON WHETHER IT WORKS
-      console.log(json)
-      // TODO TEDDY
-      console.log("INSIDE VALIDATE USER ACTION")
-      // dispatch(actions.loginUserAction())
-    })
+      if (json.signedUp) {
+        dispatch(actions.loginUserAction());
+      } else {
+        dispatch(actions.logoutUserAction());
+      }
+    });
   },
 
   signupUserAction: (username, password, pin, email) => dispatch => {
@@ -69,16 +69,14 @@ export const actions = {
       headers: {"Content-Type": "application/json"}
     }).then(response => response.json())
     .then(json => {
-      // TODO TEDDY
-      console.log("RESPONSE:")
-      console.log(json)
-      if (json["signedup"]) {
+      if (json.signedUp) {
         dispatch(actions.loginUserAction());
       } else {
         dispatch(actions.logoutUserAction());
       }
     })
   },
+
   logoutUserAction: () => ({
     type: 'LOGOUT_USER',
   }),
