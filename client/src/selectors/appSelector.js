@@ -10,3 +10,23 @@ export const isLoggedIn = state => state.getIn(
   ['homePageState', 'isLoggedIn'],
   false
 );
+
+export const stagedUsername = state => state.getIn(
+  ['homePageState', 'stagedUsername'],
+  ""
+);
+
+export const stagedPassword = state => state.getIn(
+  ['homePageState', 'stagedPassword'],
+  ""
+);
+
+export const stagedPin = state => state.getIn(
+  ['homePageState', 'stagedPin'],
+  ""
+);
+
+export const stagedEmail = state => state.getIn(
+  ['homePageState', 'stagedEmail'],
+  ""
+);

@@ -44,17 +44,29 @@
   align-items: center;
 }
 
-.bodyElementWrapper {
+.bodyElementTitle {
+  color: white;
+}
+
+.inputWrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.bodyElementTitle {
+/* --- login --- */
+
+.loginTitle {
   color: white;
+  font-size: 3rem;
 }
 
-#pleaseLogin {
+.pleaseLogin {
   color: white;
   font-size: 2rem;
+}
+
+.inputButton {
+  color: white;
+  cursor: pointer;
 }
