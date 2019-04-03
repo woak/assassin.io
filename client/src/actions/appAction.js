@@ -39,6 +39,10 @@ export const actions = {
     type: "LOGIN_USER"
   }),
 
+  logoutUserAction: () => ({
+    type: 'LOGOUT_USER',
+  }),
+
   validateUserAction: (username, password) => dispatch => {
     fetch("/loginCreds", {
       method: "POST",
@@ -77,7 +81,19 @@ export const actions = {
     })
   },
 
-  logoutUserAction: () => ({
-    type: 'LOGOUT_USER',
-  }),
+  // --- kills --- \\
+  
+  eliminateAction: (targetPin, assassinUsername) => dispatch => {
+    fetch("/targetKilled", {
+      method: "POST",
+      body: JSON.stringify({
+        targetPin,
+        assassinUsername,
+      }),
+      headers: {"Content-Type": "application/json"}
+    }).then(response => response.json())
+    .then(json => {
+      dispatch(actions.loginUserAction());
+    })
+  },
 }
