@@ -27,3 +27,5 @@ this app is hosted through heroku, in order to deploy run the following command
 
 NOTE: dependencies must be added to the root package.json
 TODO: fix the package.jsons - there's three rn and it's fucking atrocious
+
+NOTE: to view prod database run ```heroku pg:psql``` in this dir
