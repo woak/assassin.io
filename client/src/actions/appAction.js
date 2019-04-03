@@ -93,7 +93,13 @@ export const actions = {
       headers: {"Content-Type": "application/json"}
     }).then(response => response.json())
     .then(json => {
-      dispatch(actions.loginUserAction());
+      // TODO TEDDY
+      console.log(json)
+      if (json.wasKilled) {
+        dispatch(actions.changePageView("home"));
+      } else {
+        dispatch(actions.changePageView("kills"));
+      }
     })
   },
 }
