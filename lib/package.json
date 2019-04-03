@@ -3,8 +3,10 @@
     "assert": "latest",
     "express": "latest",
     "jshashes": "^1.0.7",
+    "nodemailer": "^6.0.0",
     "path": "latest",
-    "pg": "^7.9.0"
+    "pg": "^7.9.0",
+    "sendemail": "^3.4.0"
   },
   "scripts": {
     "start": "node server.js"

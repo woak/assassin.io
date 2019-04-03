@@ -16,7 +16,7 @@ class App extends Component {
     
     if (!this.props.userIsLoggedIn) {
       return <div className="bodyWrapper">
-        <b className="loginTitle">Please Login or Signup!!</b>
+        <b className="loginTitle">Please Successfully Login or Signup!!</b>
         {/* login */}
         <div className="inputWrapper">
           <b className="pleaseLogin">Login</b>
@@ -36,6 +36,7 @@ class App extends Component {
                                                 this.props.currentPassword)}
             className="inputButton">Login</b>
         </div>
+        <hr className="loginSignupBreak" />
         {/* signup */}
         <div className="inputWrapper">
           <b className="pleaseLogin">Sign up</b>
@@ -46,7 +47,7 @@ class App extends Component {
             placeholder="username">
           </input>
           <input className="inputForm"
-            type="text"
+            type="password"
             onChange={({ target: { value } }) =>
               this.props.inputStagedPassword(value)}
             placeholder="password">
@@ -75,13 +76,18 @@ class App extends Component {
     switch (this.props.currentFocus) {
 
       case "kills": return <div className="bodyWrapper">
-        {/* TODO TEDDY */}
-        <h1 className="bodyElementTitle">KILLS</h1>
-      </div>
-
-      case "gameOverview": return <div className="bodyWrapper">
-        {/* TODO TEDDY */}
-        <h1 className="bodyElementTitle">GAME OVERVIEW</h1>
+          <h1 className="bodyElementTitle">Secret pin of your kill?</h1>
+          <input className="inputForm"
+            type="number"
+            onChange={({ target: { value } }) =>
+              this.props.inputStagedPin(value)}
+            placeholder="Pin">
+          </input>
+          <b onClick={e => this.props.eliminate(this.props.currentPin, 
+                                                this.props.currentUsername)}
+             className="inputButton">
+             ELIMINATE!!
+          </b>
       </div>
 
       case "profile": return <div className="bodyWrapper">
@@ -99,7 +105,8 @@ class App extends Component {
         <h1 className="bodyElementTitle">CREATE</h1>
       </div>
 
-      // home
+      // currentFocus = home
+      // game overview
       default: return <div className="bodyWrapper">
         {/* TODO TEDDY */}
         <h1 className="bodyElementTitle">HOME</h1>
@@ -118,13 +125,13 @@ class App extends Component {
             <b className="navigatorButton"
                onClick={e => this.props.switchViewTo("home")}>Home</b>
             <b className="navigatorButton"
-               onClick={e => this.props.switchViewTo("kills")}>KILLS?!</b>
-            <b className="navigatorButton"
-               onClick={e => this.props.switchViewTo("gameOverview")}>Game overview</b>
+               onClick={e => this.props.switchViewTo("kills")}>GOT A KILL?!</b>
             <b className="navigatorButton"
                onClick={e => this.props.switchViewTo("profile")}>Profile</b>
             <b className="navigatorButton"
                onClick={e => this.props.switchViewTo("rules")}>Rules</b>
+            <b className="navigatorButton"
+               onClick={e => this.props.switchViewTo("createGame")}>Create Game</b>
             <b className="navigatorButton"
                onClick={e => this.props.logoutUser()}>Logout</b>
           </div>
@@ -166,6 +173,8 @@ const {
   validateUserAction,
   signupUserAction,
   logoutUserAction,
+
+  eliminateAction,
 } = actions;
 
 const mapDispatchToProps = dispatch => ({
@@ -184,6 +193,10 @@ const mapDispatchToProps = dispatch => ({
                                                                      pin, 
                                                                      email)),
   logoutUser: () => dispatch(logoutUserAction()),
+
+  eliminate: (targetPin, assassinUsername) => dispatch(eliminateAction(
+                                                        targetPin, 
+                                                        assassinUsername)),
 });
 
 
