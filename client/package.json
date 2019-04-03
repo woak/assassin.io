@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "dependencies": {
-    "async-selector": "^1.0.16",
+    "async-selector": "^1.0.18",
     "cross-fetch": "^3.0.1",
     "immutable": "^4.0.0-rc.12",
     "jshashes": "^1.0.7",

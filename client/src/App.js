@@ -36,7 +36,7 @@ class App extends Component {
                                                 this.props.currentPassword)}
             className="inputButton">Login</b>
         </div>
-        <hr className="loginSignupBreak" />
+        <hr className="fullPageBreak" />
         {/* signup */}
         <div className="inputWrapper">
           <b className="pleaseLogin">Sign up</b>
@@ -91,8 +91,12 @@ class App extends Component {
       </div>
 
       case "profile": return <div className="bodyWrapper">
-        {/* TODO TEDDY */}
-        <h1 className="bodyElementTitle">PROFILE</h1>
+        {this.props.retreiveTarget(this.props.currentUsername)}
+        <h1 className="bodyElementTitle">Your Profile</h1>
+        <hr className="fullPageBreak"/>
+        <b className="profileInfo">Name: {this.props.currentUsername}</b>
+        <b className="profileInfo">Target: {this.props.currentTarget}</b>
+        {/* TODO TEDDY : ALLOW FOR UPDATING INFO */}
       </div>
 
       case "rules": return <div className="bodyWrapper">
@@ -150,6 +154,8 @@ const {
   stagedPassword,
   stagedPin,
   stagedEmail,
+
+  getCurrentTarget,
 } = componentSelectors
 
 const mapStateToProps = state => ({
@@ -160,6 +166,8 @@ const mapStateToProps = state => ({
   currentPassword: stagedPassword(state),
   currentPin: stagedPin(state),
   currentEmail: stagedEmail(state),
+
+  currentTarget: getCurrentTarget(state),
 });
 
 const {
@@ -175,6 +183,8 @@ const {
   logoutUserAction,
 
   eliminateAction,
+
+  retreiveTargetAction,
 } = actions;
 
 const mapDispatchToProps = dispatch => ({
@@ -197,6 +207,8 @@ const mapDispatchToProps = dispatch => ({
   eliminate: (targetPin, assassinUsername) => dispatch(eliminateAction(
                                                         targetPin, 
                                                         assassinUsername)),
+
+  retreiveTarget: username => dispatch(retreiveTargetAction(username)),
 });
 
 

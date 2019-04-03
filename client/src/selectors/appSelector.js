@@ -1,6 +1,7 @@
 // component selectors
 // import { List } from 'immutable';
 
+
 export const currentPageFocus = state => state.getIn(
   ['homePageState', 'viewFocus'],
   "home"
@@ -28,5 +29,10 @@ export const stagedPin = state => state.getIn(
 
 export const stagedEmail = state => state.getIn(
   ['homePageState', 'stagedEmail'],
+  ""
+);
+
+export const getCurrentTarget = state => state.getIn(
+  ['homePageState', 'currentTarget'],
   ""
 );

@@ -102,4 +102,16 @@ export const actions = {
       }
     })
   },
+
+  retreiveTargetAction: username => dispatch => {
+    fetch("/target", {
+      method: "POST",
+      body: JSON.stringify({
+        username,
+      }),
+      headers: {"Content-Type": "application/json"}
+    })
+    .then(response => response.json())
+    .then(json => {console.dir(json); return json})
+  }
 }
