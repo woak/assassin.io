@@ -24,7 +24,7 @@ class App extends Component {
             type="text"
             onChange={({ target: { value } }) =>
               this.props.inputStagedUsername(value)}
-            placeholder="username">
+            placeholder="name">
           </input>
           <input className="inputForm"
             type="password"
@@ -43,7 +43,7 @@ class App extends Component {
             type="text"
             onChange={({ target: { value } }) =>
               this.props.inputStagedUsername(value)}
-            placeholder="username">
+            placeholder="name">
           </input>
           <input className="inputForm"
             type="text"
