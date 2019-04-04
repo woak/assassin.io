@@ -36,3 +36,8 @@ export const getCurrentTarget = state => state.getIn(
   ['homePageState', 'currentTarget'],
   {}
 );
+
+export const getCurrentId = state => state.getIn(
+  ['homePageState', 'currentId'],
+  false
+);

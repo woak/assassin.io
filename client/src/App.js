@@ -56,7 +56,7 @@ class App extends Component {
             type="number"
             onChange={({ target: { value } }) =>
               this.props.inputStagedPin(value)}
-            placeholder="Pin">
+            placeholder="Pin (PLEASE NOTE: leading zeroes will be dropped)">
           </input>
           <input className="inputForm"
             type="email"
@@ -97,11 +97,16 @@ class App extends Component {
         set target in state*/}
         {this.props.currentTarget.name ?
           null :
-          this.props.retreiveTarget(this.props.currentUsername)}
+          this.props.retrieveTarget(this.props.currentUsername)}
+        {this.props.currentId ?
+          null :
+          this.props.retrieveId(this.props.currentUsername)}
         <h1 className="bodyElementTitle">Your Profile</h1>
         <hr className="fullPageBreak" />
         <b className="profileInfo">Your name: &nbsp;
           {this.props.currentUsername}</b>
+        <b className="profileInfo">Your secret PIN: &nbsp;
+          {this.props.currentId}</b>
         <b className="profileInfo">Your target: &nbsp;
           {this.props.currentTarget.name}</b>
         <b className="profileInfo">Your target's email (for mischief): &nbsp;
@@ -133,22 +138,22 @@ class App extends Component {
         the winner will take the pot. The rules are as follows:</p>
         <p className="rulesText">Basic rules:</p>
         <p className="rulesText">- All participants will be assigned a target</p>
-        <p className="rulesText">- When one assassin kills their target, that 
-        assassin will fill out the death form to inform the guild that the 
+        <p className="rulesText">- When one assassin kills their target, that
+        assassin will fill out the death form to inform the guild that the
         target is dead</p>
-        <p className="rulesText">- When one assassin kills their target that 
-        assassin will receive the target's target as their new target</p> 
-        <p className="rulesText">- Last assassin standing will be 
+        <p className="rulesText">- When one assassin kills their target that
+        assassin will receive the target's target as their new target</p>
+        <p className="rulesText">- Last assassin standing will be
         crowned victor and will receive the entire pot (1$ per person).</p>
         <p className="rulesText">Elimination rules:</p>
         <p className="rulesText">This is water assassin</p>
-        <p className="rulesText">Eliminations are made by getting your target 
+        <p className="rulesText">Eliminations are made by getting your target
         wet with one of the following: </p>
         <p className="rulesText">- Water gun </p>
         <p className="rulesText">- Water balloon </p>
         <p className="rulesText">- Super soaker </p>
-        <p className="rulesText">Don't be a dick, if you get assassinated fess up, don't shoot people 
-        egregiously, don't fill out the death form if you didn't actually kill 
+        <p className="rulesText">Don't be a dick, if you get assassinated fess up, don't shoot people
+        egregiously, don't fill out the death form if you didn't actually kill
         somebody. The game doesn't work if you (yes you) are a dick. </p>
         <p>- Guns: http://bfy.tw/MzJd </p>
       </div >
@@ -166,12 +171,12 @@ class App extends Component {
         {/* TODO TEDDY */}
         <h1 className="bodyElementTitle">HOME</h1>
         <hr className="fullPageBreak" />
-        <b className="countdown">Time Remaining: </b> 
-        <b className="countdown">{((new Date("April 26, 2019") - 
-                                    Date.now())/1000/60/60/24).toFixed(0)}
+        <b className="countdown">Time Remaining: </b>
+        <b className="countdown">{((new Date("April 26, 2019") -
+          Date.now()) / 1000 / 60 / 60 / 24).toFixed(0)}
           &nbsp; days</b>
-        <b className="countdown">{(((new Date("April 26, 2019") - 
-                                    Date.now())/1000/60/60/24) % 1 * 24).toFixed(0)}
+        <b className="countdown">{(((new Date("April 26, 2019") -
+          Date.now()) / 1000 / 60 / 60 / 24) % 1 * 24).toFixed(0)}
           &nbsp; hours</b>
       </div>
     }
@@ -216,6 +221,7 @@ const {
   stagedEmail,
 
   getCurrentTarget,
+  getCurrentId,
 } = componentSelectors
 
 const mapStateToProps = state => ({
@@ -228,6 +234,7 @@ const mapStateToProps = state => ({
   currentEmail: stagedEmail(state),
 
   currentTarget: getCurrentTarget(state),
+  currentId: getCurrentId(state),
 });
 
 const {
@@ -244,7 +251,8 @@ const {
 
   eliminateAction,
 
-  retreiveTargetAction,
+  retrieveTargetAction,
+  retrieveIdAction,
 } = actions;
 
 const mapDispatchToProps = dispatch => ({
@@ -268,7 +276,8 @@ const mapDispatchToProps = dispatch => ({
     targetPin,
     assassinUsername)),
 
-  retreiveTarget: username => dispatch(retreiveTargetAction(username)),
+  retrieveTarget: username => dispatch(retrieveTargetAction(username)),
+  retrieveId: username => dispatch(retrieveIdAction(username)),
 });
 
 

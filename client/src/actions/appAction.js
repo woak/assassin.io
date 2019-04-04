@@ -106,7 +106,7 @@ export const actions = {
 
   // --- get target --- \\
 
-  retreiveTargetAction: username => dispatch => {
+  retrieveTargetAction: username => dispatch => {
     fetch("/target", {
       method: "POST",
       body: JSON.stringify({
@@ -117,8 +117,6 @@ export const actions = {
     .then(response => response.json())
     .then(json => {
       if (json.target) {
-        // TODO TEDDY
-        // console.dir(json)
         dispatch(actions.setTargetAction(json.target));
       } else {
         dispatch(actions.changePageView("error"))
@@ -130,4 +128,29 @@ export const actions = {
     type: "SET_TARGET",
     targetInfo,
   }),
+
+  // --- get id --- \\
+  retrieveIdAction: username => dispatch => {
+    fetch("/id", {
+      method: "POST",
+      body: JSON.stringify({
+        username,
+      }),
+      headers: {"Content-Type": "application/json"}
+    })
+    .then(response => response.json())
+    .then(json => {
+      if (json.id) {
+        dispatch(actions.setIdAction(json.id));
+      } else {
+        dispatch(actions.changePageView("error"))
+      }
+    });
+  },
+
+  setIdAction: id => ({
+    type: "SET_ID",
+    id,
+  }),
+
 }

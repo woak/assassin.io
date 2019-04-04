@@ -25,6 +25,8 @@ export default (state = new Map(), action) => {
 
     case 'SET_TARGET': return state.setIn(['currentTarget'], action.targetInfo);
 
+    case 'SET_ID': return state.setIn(["currentId"], action.id);
+
     default: return state;
   }
   
