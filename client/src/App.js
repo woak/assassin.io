@@ -105,7 +105,7 @@ class App extends Component {
         <hr className="fullPageBreak" />
         <b className="profileInfo">Your name: &nbsp;
           {this.props.currentUsername}</b>
-        <b className="profileInfo">Your secret PIN: &nbsp;
+        <b className="profileInfo">Your secret PIN (NOTE: leading zeroes are dropped): &nbsp;
           {this.props.currentId}</b>
         <b className="profileInfo">Your target: &nbsp;
           {this.props.currentTarget.name}</b>
