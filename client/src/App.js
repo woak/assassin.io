@@ -95,9 +95,12 @@ class App extends Component {
         {/* TODO TEDDY : WHAT IF TARGET CHANGES (NOW HANDLED IN KILL ACTION? 
         Currently only runs if no target -> Need a better solution for when to 
         set target in state*/}
-        {this.props.currentTarget.name ?
+        {/* {this.props.currentTarget.name ?
           null :
-          this.props.retreiveTarget(this.props.currentUsername)}
+          this.props.retreiveTarget(this.props.currentUsername)} */}
+          {/* TODO TEDDY */}
+        {console.log("CURRENT TARGET:")}
+        {console.dir(this.props.currentTarget)}
         <h1 className="bodyElementTitle">Your Profile</h1>
         <hr className="fullPageBreak" />
         <b className="profileInfo">Your name: &nbsp;
@@ -244,7 +247,6 @@ const {
 
   eliminateAction,
 
-  retreiveTargetAction,
 } = actions;
 
 const mapDispatchToProps = dispatch => ({
@@ -268,7 +270,6 @@ const mapDispatchToProps = dispatch => ({
     targetPin,
     assassinUsername)),
 
-  retreiveTarget: username => dispatch(retreiveTargetAction(username)),
 });
 
 

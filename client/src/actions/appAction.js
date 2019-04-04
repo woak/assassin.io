@@ -103,29 +103,4 @@ export const actions = {
       }
     })
   },
-
-  retreiveTargetAction: username => dispatch => {
-    fetch("/target", {
-      method: "POST",
-      body: JSON.stringify({
-        username,
-      }),
-      headers: {"Content-Type": "application/json"}
-    })
-    .then(response => response.json())
-    .then(json => {
-      if (json.target) {
-        // TODO TEDDY
-        // console.dir(json)
-        dispatch(actions.setTargetAction(json.target));
-      } else {
-        dispatch(actions.changePageView("error"))
-      }
-    });
-  },
-
-  setTargetAction: targetInfo => ({
-    type: "SET_TARGET",
-    targetInfo,
-  }),
 }
