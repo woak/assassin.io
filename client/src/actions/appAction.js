@@ -73,6 +73,9 @@ export const actions = {
       headers: {"Content-Type": "application/json"}
     }).then(response => response.json())
     .then(json => {
+      // TODO TEDDY
+      console.log("USER SIGNED UP :")
+      console.dir(json);
       if (json.signedUp) {
         dispatch(actions.loginUserAction());
       } else {

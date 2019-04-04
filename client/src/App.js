@@ -54,8 +54,10 @@ class App extends Component {
           </input>
           <input className="inputForm"
             type="number"
-            onChange={({ target: { value } }) =>
-              this.props.inputStagedPin(value)}
+            onChange={({ target: { value } }) => {
+              value = value.replace('e', '');
+              this.props.inputStagedPin(value)
+            }}
             placeholder="Pin (PLEASE NOTE: leading zeroes will be dropped)">
           </input>
           <input className="inputForm"
