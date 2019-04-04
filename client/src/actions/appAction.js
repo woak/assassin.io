@@ -96,9 +96,10 @@ export const actions = {
       // TODO TEDDY
       console.log(json)
       if (json.wasKilled) {
-        dispatch(actions.changePageView("home"));
+        // update target name
+        dispatch(actions.retreiveTargetAction(assassinUsername));
       } else {
-        dispatch(actions.changePageView("kills"));
+        dispatch(actions.changePageView("error"));
       }
     })
   },
@@ -112,6 +113,19 @@ export const actions = {
       headers: {"Content-Type": "application/json"}
     })
     .then(response => response.json())
-    .then(json => {console.dir(json); return json})
-  }
+    .then(json => {
+      if (json.target) {
+        // TODO TEDDY
+        // console.dir(json)
+        dispatch(actions.setTargetAction(json.target));
+      } else {
+        dispatch(actions.changePageView("error"))
+      }
+    });
+  },
+
+  setTargetAction: targetInfo => ({
+    type: "SET_TARGET",
+    targetInfo,
+  }),
 }

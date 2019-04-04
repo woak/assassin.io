@@ -34,5 +34,5 @@ export const stagedEmail = state => state.getIn(
 
 export const getCurrentTarget = state => state.getIn(
   ['homePageState', 'currentTarget'],
-  ""
+  {}
 );

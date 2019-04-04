@@ -23,6 +23,8 @@ export default (state = new Map(), action) => {
 
     case 'LOGOUT_USER': return state.setIn(['isLoggedIn'], false);
 
+    case 'SET_TARGET': return state.setIn(['currentTarget'], action.targetInfo);
+
     default: return state;
   }
   
