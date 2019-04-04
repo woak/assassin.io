@@ -173,7 +173,7 @@ class App extends Component {
   render = () => (
     <div className="App">
       <div className="homepage">
-        <div className="nagivagorWrapper">
+        <div className="navigatorWrapper">
           <b className="title">
             EPO E-ssassin
           </b>
