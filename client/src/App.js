@@ -166,6 +166,13 @@ class App extends Component {
         {/* TODO TEDDY */}
         <h1 className="bodyElementTitle">HOME</h1>
         <hr className="fullPageBreak" />
+        <b className="countdown">Time Remaining: </b> 
+        <b className="countdown">{((new Date("April 26, 2019") - 
+                                    Date.now())/1000/60/60/24).toFixed(0)}
+          &nbsp; days</b>
+        <b className="countdown">{(((new Date("April 26, 2019") - 
+                                    Date.now())/1000/60/60/24) % 1 * 24).toFixed(0)}
+          &nbsp; hours</b>
       </div>
     }
   }
@@ -186,6 +193,7 @@ class App extends Component {
               onClick={e => this.props.switchViewTo("profile")}>Profile</b>
             <b className="navigatorButton"
               onClick={e => this.props.switchViewTo("rules")}>Rules</b>
+            {/* TODO TEDDY */}
             {/* <b className="navigatorButton"
               onClick={e => this.props.switchViewTo("createGame")}>Create Game</b> */}
             <b className="navigatorButton"
