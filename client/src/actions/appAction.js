@@ -104,6 +104,8 @@ export const actions = {
     })
   },
 
+  // --- get target --- \\
+
   retreiveTargetAction: username => dispatch => {
     fetch("/target", {
       method: "POST",
