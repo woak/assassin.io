@@ -28,7 +28,7 @@
     "express": "latest",
     "nodemailer": "^6.0.0",
     "path": "latest",
-    "pg": "^7.9.0",
+    "pg": "^7.9.0"
   },
   "devDependencies": {},
   "keywords": [],
