@@ -95,7 +95,7 @@ export const actions = {
     .then(json => {
       if (json.wasKilled) {
         // update target name
-        dispatch(actions.retreiveTargetAction(assassinUsername));
+        dispatch(actions.retrieveTargetAction(assassinUsername));
       } else {
         dispatch(actions.changePageView("error"));
       }
@@ -116,6 +116,7 @@ export const actions = {
     .then(json => {
       if (json.target) {
         dispatch(actions.setTargetAction(json.target));
+        dispatch(actions.changePageView("profile"));
       } else {
         dispatch(actions.changePageView("error"))
       }
