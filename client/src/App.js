@@ -38,7 +38,7 @@ class App extends Component {
         </div>
         <hr className="fullPageBreak" />
         {/* signup */}
-        {/* <div className="inputWrapper">
+        <div className="inputWrapper">
           <b className="pleaseLogin">Sign up</b>
           <input className="inputForm"
             type="text"
@@ -71,7 +71,7 @@ class App extends Component {
             this.props.currentPin,
             this.props.currentEmail)}
             className="inputButton">Sign up</b>
-        </div> */}
+        </div>
       </div>
     }
 
