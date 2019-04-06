@@ -73,9 +73,6 @@ export const actions = {
       headers: {"Content-Type": "application/json"}
     }).then(response => response.json())
     .then(json => {
-      // TODO TEDDY
-      console.log("USER SIGNED UP :")
-      console.dir(json);
       if (json.signedUp) {
         dispatch(actions.loginUserAction());
       } else {
@@ -96,8 +93,6 @@ export const actions = {
       headers: {"Content-Type": "application/json"}
     }).then(response => response.json())
     .then(json => {
-      // TODO TEDDY
-      console.log(json)
       if (json.wasKilled) {
         // update target name
         dispatch(actions.retreiveTargetAction(assassinUsername));
