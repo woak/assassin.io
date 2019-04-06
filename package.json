@@ -26,9 +26,9 @@
 
     "assert": "latest",
     "express": "latest",
+    "nodemailer": "^6.0.0",
     "path": "latest",
     "pg": "^7.9.0",
-    "sendemail": "^3.4.0"
   },
   "devDependencies": {},
   "keywords": [],
