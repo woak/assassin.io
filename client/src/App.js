@@ -12,66 +12,68 @@ import './App.css';
 
 class App extends Component {
 
+  loginPage = () => <div className="inputWrapper">
+    <b className="pleaseLogin">Login</b>
+    <input className="inputForm"
+      type="text"
+      onChange={({ target: { value } }) =>
+        this.props.inputStagedUsername(value)}
+      placeholder="name">
+    </input>
+    <input className="inputForm"
+      type="password"
+      onChange={({ target: { value } }) =>
+        this.props.inputStagedPassword(value)}
+      placeholder="password">
+    </input>
+    <b onClick={e => this.props.loginUser(this.props.currentUsername,
+      this.props.currentPassword)}
+      className="inputButton">Login</b>
+  </div>
+
+  signupPage = () => <div className="inputWrapper">
+  <b className="pleaseLogin">Sign up</b>
+  <input className="inputForm"
+    type="text"
+    onChange={({ target: { value } }) =>
+      this.props.inputStagedUsername(value)}
+    placeholder="name">
+  </input>
+  <input className="inputForm"
+    type="password"
+    onChange={({ target: { value } }) =>
+      this.props.inputStagedPassword(value)}
+    placeholder="password">
+  </input>
+  <input className="inputForm"
+    type="number"
+    onChange={({ target: { value } }) => {
+      value = value.replace('e', '');
+      this.props.inputStagedPin(value)
+    }}
+    placeholder="Pin (PLEASE NOTE: leading zeroes will be dropped)">
+  </input>
+  <input className="inputForm"
+    type="email"
+    onChange={({ target: { value } }) =>
+      this.props.inputStagedEmail(value)}
+    placeholder="email">
+  </input>
+  <b onClick={e => this.props.signupUser(this.props.currentUsername,
+    this.props.currentPassword,
+    this.props.currentPin,
+    this.props.currentEmail)}
+    className="inputButton">Sign up</b>
+</div>
+
   pageFocus = () => {
 
     if (!this.props.userIsLoggedIn) {
       return <div className="bodyWrapper">
         <b className="loginTitle">Please Successfully Login or Signup!!</b>
-        {/* login */}
-        <div className="inputWrapper">
-          <b className="pleaseLogin">Login</b>
-          <input className="inputForm"
-            type="text"
-            onChange={({ target: { value } }) =>
-              this.props.inputStagedUsername(value)}
-            placeholder="name">
-          </input>
-          <input className="inputForm"
-            type="password"
-            onChange={({ target: { value } }) =>
-              this.props.inputStagedPassword(value)}
-            placeholder="password">
-          </input>
-          <b onClick={e => this.props.loginUser(this.props.currentUsername,
-            this.props.currentPassword)}
-            className="inputButton">Login</b>
-        </div>
+        {this.loginPage()}
         <hr className="fullPageBreak" />
-        {/* signup */}
-        {/* <div className="inputWrapper">
-          <b className="pleaseLogin">Sign up</b>
-          <input className="inputForm"
-            type="text"
-            onChange={({ target: { value } }) =>
-              this.props.inputStagedUsername(value)}
-            placeholder="name">
-          </input>
-          <input className="inputForm"
-            type="password"
-            onChange={({ target: { value } }) =>
-              this.props.inputStagedPassword(value)}
-            placeholder="password">
-          </input>
-          <input className="inputForm"
-            type="number"
-            onChange={({ target: { value } }) => {
-              value = value.replace('e', '');
-              this.props.inputStagedPin(value)
-            }}
-            placeholder="Pin (PLEASE NOTE: leading zeroes will be dropped)">
-          </input>
-          <input className="inputForm"
-            type="email"
-            onChange={({ target: { value } }) =>
-              this.props.inputStagedEmail(value)}
-            placeholder="email">
-          </input>
-          <b onClick={e => this.props.signupUser(this.props.currentUsername,
-            this.props.currentPassword,
-            this.props.currentPin,
-            this.props.currentEmail)}
-            className="inputButton">Sign up</b>
-        </div> */}
+        {this.signupPage()}        
       </div>
     }
 
@@ -167,6 +169,12 @@ class App extends Component {
         <hr className="fullPageBreak" />
       </div>
 
+      case "admin": return <div className="bodyWrapper">
+      {/* TODO TEDDY */}
+      <h1 className="bodyElementTitle">ADMIN</h1>
+      <hr className="fullPageBreak" />
+    </div>
+
       // currentFocus = home
       // game overview
       default: return <div className="bodyWrapper">
@@ -201,8 +209,8 @@ class App extends Component {
             <b className="navigatorButton"
               onClick={e => this.props.switchViewTo("rules")}>Rules</b>
             {/* TODO TEDDY */}
-            {/* <b className="navigatorButton"
-              onClick={e => this.props.switchViewTo("createGame")}>Create Game</b> */}
+            <b className="navigatorButton"
+              onClick={e => this.props.switchViewTo("rules")}>Admin/Create Game</b>
             <b className="navigatorButton"
               onClick={e => this.props.logoutUser()}>Logout</b>
           </div>
