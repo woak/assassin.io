@@ -23,9 +23,11 @@ To run server
   
 ---Deployment---
 this app is hosted through heroku, in order to deploy run the following command  
-```git push heroku master```   
-
-NOTE: dependencies must be added to the root package.json
-TODO: fix the package.jsons - there's three rn and it's fucking atrocious
+```git push heroku master```  
+  
+--- NOTES ---    
+  
+NOTE: back-end dependencies must be added to the root package.json and front
+end dependencies must be added to /client/package.json
 
 NOTE: to view prod database run ```heroku pg:psql``` in this dir
