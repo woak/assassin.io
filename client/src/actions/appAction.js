@@ -97,7 +97,7 @@ export const actions = {
         // update target name
         dispatch(actions.retrieveTargetAction(assassinUsername));
       } else {
-        dispatch(actions.changePageView("error"));
+        dispatch(actions.changePageView("kills"));
       }
     })
   },
